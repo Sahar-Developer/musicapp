@@ -1,5 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:musicapp/pagesOfBars/feedBack.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -9,8 +11,7 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<Settings> {
-  bool isDarkMode =
-      false; // Replace this with your app's actual dark mode state
+  bool isDarkMode = false;
 
   @override
   Widget build(BuildContext context) {
@@ -23,78 +24,24 @@ class _SettingsPageState extends State<Settings> {
               value: isDarkMode,
               onChanged: (value) {
                 setState(() {
+                  Get.changeThemeMode(
+                      Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
                   isDarkMode = value;
-                  // Add code to change the theme mode here, similar to what we did in the previous answers.
                 });
               },
             ),
           ),
           ListTile(
-            title: Text('Dark Mode'),
-            trailing: Switch(
-              value: isDarkMode,
-              onChanged: (value) {
-                setState(() {
-                  isDarkMode = value;
-                  // Add code to change the theme mode here, similar to what we did in the previous answers.
-                });
-              },
-            ),
+            title: Text('Feedback'),
+            trailing: Icon(Icons.message_outlined),
+            onTap: () {
+              Get.to(() => FeedbackPage());
+            },
           ),
           ListTile(
-            title: Text('Dark Mode'),
-            trailing: Switch(
-              value: isDarkMode,
-              onChanged: (value) {
-                setState(() {
-                  isDarkMode = value;
-                  // Add code to change the theme mode here, similar to what we did in the previous answers.
-                });
-              },
-            ),
+            title: Text('Logout'),
           ),
-          ListTile(
-            title: Text('Dark Mode'),
-            trailing: Switch(
-              value: isDarkMode,
-              onChanged: (value) {
-                setState(() {
-                  isDarkMode = value;
-                  // Add code to change the theme mode here, similar to what we did in the previous answers.
-                });
-              },
-            ),
-          ),
-          Divider(
-            thickness: 1,
-          ),
-          ListTile(
-            title: Text('Dark Mode'),
-            trailing: Switch(
-              value: isDarkMode,
-              onChanged: (value) {
-                setState(() {
-                  isDarkMode = value;
-                  // Add code to change the theme mode here, similar to what we did in the previous answers.
-                });
-              },
-            ),
-          ),
-          ListTile(
-            title: Text('Dark Mode'),
-            trailing: Switch(
-              value: isDarkMode,
-              onChanged: (value) {
-                setState(() {
-                  isDarkMode = value;
-                  // Add code to change the theme mode here, similar to what we did in the previous answers.
-                });
-              },
-            ),
-          ),
-          Divider(
-            thickness: 1,
-          ),
+          Divider(thickness: 1),
           ListTile(
               leading: Icon(Icons.exit_to_app),
               title: Text('EXIT'),

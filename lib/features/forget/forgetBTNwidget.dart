@@ -25,13 +25,8 @@ class ForgetPasswordBTNsheet extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(
-              btnIcon,
-              size: 60.0,
-            ),
-            SizedBox(
-              width: 20,
-            ),
+            Icon(btnIcon, size: 60.0),
+            SizedBox(width: 20),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

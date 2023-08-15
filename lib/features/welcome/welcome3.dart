@@ -3,9 +3,10 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:musicapp/consts/colors.dart';
 import 'package:musicapp/consts/images.dart';
-import 'package:musicapp/features/login.dart';
-import 'package:musicapp/features/signup.dart';
+import 'package:musicapp/views/home.dart';
 import '../../controllers/splashController.dart';
+import '../login.dart';
+import '../signUp/signup.dart';
 
 class WelcomeThree extends StatelessWidget {
   WelcomeThree({super.key});
@@ -13,6 +14,7 @@ class WelcomeThree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     splashController.startAnimation;
+    final size = MediaQuery.of(context).size;
 
     return Scaffold(
       body: Container(
@@ -27,14 +29,12 @@ class WelcomeThree extends StatelessWidget {
           children: [
             //png backgroung
             Obx(
-              () => AnimatedPositioned(
-                top: splashController.animate.value ? -100 : 0,
+              () => Positioned(
+                top: splashController.animate.value ? -50 : 0,
                 right: splashController.animate.value ? -100 : 0,
                 bottom: splashController.animate.value ? -50 : 0,
                 left: splashController.animate.value ? -100 : 0,
-                duration: Duration(milliseconds: 1600),
-                child: AnimatedOpacity(
-                  duration: Duration(milliseconds: 1800),
+                child: Opacity(
                   opacity: splashController.animate.value ? 1 : 0,
                   child: Opacity(
                     opacity: 0.6,
@@ -45,31 +45,34 @@ class WelcomeThree extends StatelessWidget {
                 ),
               ),
             ),
-            //the text of LET'S START...
-            Obx(
-              () => AnimatedPositioned(
-                  bottom: splashController.animate.value ? 200 : -230,
-                  left: splashController.animate.value ? 130 : -50,
-                  duration: Duration(milliseconds: 1600),
-                  child: AnimatedOpacity(
-                    duration: Duration(milliseconds: 2000),
-                    opacity: splashController.animate.value ? 1 : 0,
-                    child: Text("Let's START...",
-                        style: GoogleFonts.montserrat(
-                          fontSize: 26,
-                          color: AppColor.lslideColor,
-                          fontWeight: FontWeight.w500,
-                        )),
-                  )),
-            ),
+            //the text of LET'S START...((FIRST SENARIO...))
+            // Obx(
+            //   () => Positioned(
+            //       bottom: splashController.animate.value
+            //           ? size.height * 0.35
+            //           : -230,
+            //       left:
+            //           splashController.animate.value ? size.width * 0.30 : -50,
+            //       child: Opacity(
+            //         opacity: splashController.animate.value ? 1 : 0,
+            //         child: Text("Let's START...",
+            //             style: GoogleFonts.montserrat(
+            //               fontSize: 26,
+            //               color: AppColor.lslideColor,
+            //               fontWeight: FontWeight.w500,
+            //             )),
+            //       )),
+            // ),
+
             //IMAGE KAR
             Obx(
-              () => AnimatedPositioned(
-                  top: splashController.animate.value ? 50 : -130,
-                  left: splashController.animate.value ? -20 : 0,
-                  duration: Duration(milliseconds: 1600),
-                  child: AnimatedOpacity(
-                    duration: Duration(milliseconds: 2000),
+              () => Positioned(
+                  top: splashController.animate.value
+                      ? size.height * 0.055
+                      : -10,
+                  left: splashController.animate.value ? size.width * 0.01 : 0,
+                  right: splashController.animate.value ? size.width * 0.01 : 0,
+                  child: Opacity(
                     opacity: splashController.animate.value ? 1 : 0,
                     child: Container(
                       width: 450,
@@ -85,34 +88,34 @@ class WelcomeThree extends StatelessWidget {
                     ),
                   )),
             ),
-            //BUTTOMS of LOGIN AND SIGNUP
+
+            //BUTTOMS of LOGIN AND SIGNUP((First Senario...))
             Obx(() => Positioned(
-                  left: 50,
-                  bottom: 100,
-                  child: AnimatedOpacity(
-                      duration: Duration(milliseconds: 2000),
+                  left: size.height * 0.05,
+                  right: size.height * 0.05,
+                  bottom: size.height * 0.2,
+                  child: Opacity(
                       opacity: splashController.animate.value ? 1 : 0,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           OutlinedButton(
-                              onPressed: () {
-                                Get.to(() => LoginPage());
-                              },
-                              // => Get.to(LoginPage()),
                               child: Text(
                                 "LogIn".toUpperCase(),
                                 style: GoogleFonts.montserrat(
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 30,
-                                    color: Color.fromARGB(255, 46, 46, 46)),
-                              )),
+                                    fontSize: 28,
+                                    color: AppColor.lwhiteColor),
+                              ),
+                              onPressed: () {
+                                Get.to(() => LoginPage());
+                              }),
                           ElevatedButton(
                               style: ButtonStyle(
                                 backgroundColor: MaterialStateColor.resolveWith(
-                                    (states) => Colors.blueAccent.shade200),
+                                    (states) => AppColor.lwhiteColor),
                                 shadowColor: MaterialStateColor.resolveWith(
-                                    (states) => Colors.black38),
+                                    (states) => Colors.black45),
                               ),
                               onPressed: () {
                                 Get.to(() => SignupPage());
@@ -120,13 +123,34 @@ class WelcomeThree extends StatelessWidget {
                               child: Text(
                                 "SignUp".toUpperCase(),
                                 style: GoogleFonts.montserrat(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 30,
-                                    color: Colors.black87),
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 28,
+                                    color: AppColor.dwhiteColor),
                               ))
                         ],
                       )),
-                ))
+                )),
+
+            //BUTTON OF GOING TO THE HOME ROUTE((SECOND SENARIO...))
+            Obx(() => Positioned(
+                bottom: size.height * 0.28,
+                left: size.width * 0.1,
+                right: size.width * 0.1,
+                child: Opacity(
+                    opacity: splashController.animate.value ? 1 : 0,
+                    child: SizedBox(
+                      child: ElevatedButton(
+                          onPressed: () {
+                            Get.to(() => Home());
+                          },
+                          child: Text(
+                            "LET'S START",
+                            style: GoogleFonts.montserrat(
+                                color: AppColor.dwhiteColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20),
+                          )),
+                    ))))
           ],
         ),
       ),

@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:musicapp/pagesOfBars/searchPage.dart';
 import 'package:musicapp/pagesOfBars/setting.dart';
-// import '../consts/colors.dart';
 import '../controllers/NavBar.dart';
 import '../pagesOfBars/homePage.dart';
 
@@ -18,9 +17,7 @@ class _HomeState extends State<Home> {
   int _selectedIndex = 0;
 
   final List<Widget> pages = [
-    HomePage(
-      data: [],
-    ),
+    HomePage(data: []),
     const SearchPage(),
     const Settings(),
   ];
@@ -28,11 +25,8 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const NavBar(),
+      drawer: NavBar(),
       bottomNavigationBar: GNav(
-        // backgroundColor: bgDarkColor,
-        // color: whiteColor,
-        // activeColor: slideColor,
         gap: 8,
         tabs: const [
           GButton(
@@ -55,7 +49,6 @@ class _HomeState extends State<Home> {
           });
         },
       ),
-      // backgroundColor: bgColor,
       appBar: AppBar(
         actions: [
           IconButton(
@@ -71,18 +64,10 @@ class _HomeState extends State<Home> {
           ),
         ],
         title: Row(children: [
-          Text(
-            "My",
-            // style: TextStyle(color: AppColor.lslideColor),
-            // style: ourStyle(family: bold, size: 22, color: whiteColor),
-          ),
+          Text("My"),
           Padding(
             padding: const EdgeInsets.only(left: 8.0),
-            child: Text(
-              "Music",
-              // style: TextStyle(color: AppColor.dslideColor),
-              // style: ourStyle(family: bold, size: 22, color: slideColor),
-            ),
+            child: Text("Music"),
           ),
         ]),
       ),

@@ -9,9 +9,8 @@ class AppColor {
   static var dbuttonnColor = Color.fromARGB(255, 112, 73, 202);
   static var dbgColor = Color.fromARGB(255, 80, 59, 203);
   static var dbgDarkColor = Color.fromARGB(255, 51, 41, 166);
-  // static var dgradient =
-  //     LinearGradient(colors: [AppColor.dbgDarkColor, AppColor.dbuttonColor]);
-  // static var lnewcolor = Color.fromRGBO(92, 70, 156, 0.238);
+  static var dgradient =
+      LinearGradient(colors: [AppColor.dbgDarkColor, AppColor.dbuttonColor]);
 
 //light theme color
 
@@ -19,6 +18,8 @@ class AppColor {
   static var lslideColor = Color.fromARGB(255, 243, 249, 167);
   static var lbuttonColor = Color.fromARGB(255, 255, 192, 203);
   static var lbuttonnColor = Color.fromARGB(255, 255, 104, 62);
-  static var lbgColor = Color.fromARGB(255, 255, 212, 125);
-  static var lbgDarkColor = Color.fromARGB(255, 206, 255, 101);
+  static var lbgColor = Color.fromARGB(255, 125, 181, 255);
+  static var lbgDarkColor = Color.fromARGB(255, 101, 201, 255);
+  static var lgradient =
+      LinearGradient(colors: [AppColor.lbgColor, AppColor.lslideColor]);
 }

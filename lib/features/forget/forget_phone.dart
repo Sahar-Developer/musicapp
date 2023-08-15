@@ -16,9 +16,7 @@ class ForgetPassPhoneScreen extends StatelessWidget {
             padding: EdgeInsets.all(30),
             child: Column(
               children: [
-                SizedBox(
-                  height: 100,
-                ),
+                SizedBox(height: 100),
                 FormHeaderWidget(
                   image: forget,
                   title: "Forget Password",
@@ -28,9 +26,7 @@ class ForgetPassPhoneScreen extends StatelessWidget {
                   heightBetween: 40.0,
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(
-                  height: 50,
-                ),
+                SizedBox(height: 50),
                 Form(
                     child: Column(
                   children: [
@@ -40,9 +36,7 @@ class ForgetPassPhoneScreen extends StatelessWidget {
                           hintText: "+9800000000",
                           prefixIcon: Icon(Icons.mail_outline_outlined)),
                     ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
+                    SizedBox(height: 20.0),
                     SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(

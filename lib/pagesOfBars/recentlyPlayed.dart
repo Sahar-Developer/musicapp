@@ -1,10 +1,7 @@
 import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:musicapp/consts/colors.dart';
-// import 'package:musicapp/consts/text_style.dart';
 import 'package:musicapp/controllers/player_controller.dart';
 import 'package:musicapp/views/player.dart';
 import 'package:on_audio_query/on_audio_query.dart';
@@ -19,10 +16,8 @@ class RecentlyPlayedPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Recently Played',
-          // style: ourStyle(family: regular, color: slideColor, size: 20),
         ),
       ),
-      // backgroundColor: buttonnColor,
       body: FutureBuilder<List<SongModel>>(
         future: controller.audioQuery.querySongs(
           ignoreCase: true,
@@ -56,8 +51,6 @@ class RecentlyPlayedPage extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    // Perform the operation related to playing the song
-                    // For example:
                     Get.to(Player(data: snapshot.data!));
                   },
                 );
@@ -67,7 +60,6 @@ class RecentlyPlayedPage extends StatelessWidget {
             return Center(
               child: Text(
                 'No Recently Played Songs',
-                // style: ourStyle(family: bold, size: 28, color: slideColor),
               ),
             );
           }

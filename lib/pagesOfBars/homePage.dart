@@ -12,11 +12,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.put(PlayerController());
-    // var playerController = Get.find<PlayerController>();
-    //  var recentlyPlayedController = Get.put(RecentlyPlayedController());
 
     return Scaffold(
-        // backgroundColor: bgColor,
 
         //main codes for playing music is here
         body: FutureBuilder<List<SongModel>>(
@@ -35,7 +32,6 @@ class HomePage extends StatelessWidget {
           return Center(
               child: Text(
             "No Song Found!",
-            // style: ourStyle(),
           ));
         } else {
           print(snapshot.data);
@@ -48,22 +44,16 @@ class HomePage extends StatelessWidget {
               //the settings for each item in the listview
               itemBuilder: (BuildContext context, int index) {
                 return Container(
-                  margin: const EdgeInsets.only(bottom: 0.5),
+                  margin: const EdgeInsets.only(bottom: 1),
                   child: Obx(() => ListTile(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5),
                         ),
-                        // tileColor: newcolor,
-                        //the settings and styles of the artist an songs
                         title: Text(
                           snapshot.data![index].displayNameWOExt,
-                          // style: ourStyle(
-                          // family: bold, size: 15, color: whiteColor),
                         ),
                         subtitle: Text(
                           "${snapshot.data![index].artist}",
-                          // style: ourStyle(
-                          // family: regular, size: 12, color: whiteColor),
                         ),
                         //the icon and cover of music
                         leading: QueryArtworkWidget(
@@ -71,7 +61,6 @@ class HomePage extends StatelessWidget {
                           type: ArtworkType.AUDIO,
                           nullArtworkWidget: const Icon(
                             Icons.music_note,
-                            // color: slideColor,
                             size: 35,
                           ),
                         ),
@@ -80,7 +69,6 @@ class HomePage extends StatelessWidget {
                                 controller.isPlaying.value
                             ? const Icon(
                                 Icons.play_arrow,
-                                // color: whiteColor,
                                 size: 25,
                               )
                             : null,

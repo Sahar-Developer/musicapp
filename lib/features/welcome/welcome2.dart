@@ -6,11 +6,11 @@ import 'package:musicapp/consts/images.dart';
 import '../../controllers/splashController.dart';
 
 class WelcomeTwo extends StatelessWidget {
-  // WelcomeTwo({super.key});
   final splashController = Get.put(SplashController());
   @override
   Widget build(BuildContext context) {
     splashController.startAnimation;
+    final size = MediaQuery.of(context).size;
 
     return Scaffold(
       body: Container(
@@ -24,14 +24,12 @@ class WelcomeTwo extends StatelessWidget {
         child: Stack(
           children: [
             Obx(
-              () => AnimatedPositioned(
+              () => Positioned(
                 top: splashController.animate.value ? -150 : 0,
                 right: splashController.animate.value ? -200 : 0,
                 bottom: splashController.animate.value ? -300 : 0,
                 left: splashController.animate.value ? -200 : 0,
-                duration: Duration(milliseconds: 1500),
-                child: AnimatedOpacity(
-                  duration: Duration(milliseconds: 1800),
+                child: Opacity(
                   opacity: splashController.animate.value ? 1 : 0,
                   child: Opacity(
                     opacity: 0.8,
@@ -43,12 +41,10 @@ class WelcomeTwo extends StatelessWidget {
               ),
             ),
             Obx(
-              () => AnimatedPositioned(
+              () => Positioned(
                   bottom: splashController.animate.value ? 200 : -230,
                   left: splashController.animate.value ? 40 : -50,
-                  duration: Duration(milliseconds: 1500),
-                  child: AnimatedOpacity(
-                    duration: Duration(milliseconds: 2000),
+                  child: Opacity(
                     opacity: splashController.animate.value ? 1 : 0,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,28 +70,22 @@ class WelcomeTwo extends StatelessWidget {
                   )),
             ),
             Obx(
-              () => AnimatedPositioned(
-                  top: splashController.animate.value ? 30 : -130,
-                  // left: 20,
-                  // bottom: 240,
-                  duration: Duration(milliseconds: 1600),
-                  child: AnimatedOpacity(
-                    duration: Duration(milliseconds: 2000),
-                    opacity: splashController.animate.value ? 1 : 0,
-                    child: Container(
-                      width: 550,
-                      height: 550,
-                      child: Opacity(
-                        opacity: 0.65,
-                        child: Image(
-                          // alignment: Alignment.center,
-                          image: AssetImage(
-                            welcome2,
-                          ),
-                        ),
+              () => Positioned(
+                  child: Opacity(
+                opacity: splashController.animate.value ? 1 : 0,
+                child: Container(
+                  width: size.width,
+                  height: size.height / 1.5,
+                  child: Opacity(
+                    opacity: 0.65,
+                    child: Image(
+                      image: AssetImage(
+                        welcome2,
                       ),
                     ),
-                  )),
+                  ),
+                ),
+              )),
             ),
           ],
         ),

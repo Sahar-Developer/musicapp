@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:musicapp/controllers/player_controller.dart';
+import 'package:musicapp/views/player.dart';
 import 'package:on_audio_query/on_audio_query.dart';
-import '../views/playerScreen.dart';
 
 class MusicList extends SearchDelegate<SongModel> {
   final OnAudioQuery audioQuery;
@@ -28,11 +28,7 @@ class MusicList extends SearchDelegate<SongModel> {
   Widget buildLeading(BuildContext context) {
     return IconButton(
       icon: Icon(Icons.arrow_back),
-      onPressed: () {
-        // close(
-        //   context,
-        // ); // Return null when pressing the back button
-      },
+      onPressed: () {},
     );
   }
 
@@ -45,28 +41,9 @@ class MusicList extends SearchDelegate<SongModel> {
               return const Center(
                 child: CircularProgressIndicator(),
               );
-            }
-            //  else if (snapshot.hasData) {
-            //   return ListView.builder(
-            //     itemCount: snapshot.data!.length,
-            //     itemBuilder: (context, index) {
-            //       final song = snapshot.data![index];
-            //       return ListTile(
-            //         title: Text(song.title),
-            //         subtitle: Text(song.artist ?? 'Unknown Artist'),
-            //         onTap: () {
-            //           close(context, song);
-            //         },
-            //       );
-            //     },
-            //   );
-            // }
-            else {
+            } else {
               return Center(
-                child: Text(
-                  'No Results Found',
-                  // style: ourStyle(family: bold, size: 28, color: slideColor),
-                ),
+                child: Text('No Results Found'),
               );
             }
           },
@@ -76,7 +53,7 @@ class MusicList extends SearchDelegate<SongModel> {
   void openPlayer(SongModel song) {
     int index = controller.playIndex.value;
     controller.setCurrentSong(song, song.uri, index);
-    Get.to(PlayerScreen(
+    Get.to(Player(
       data: [song],
     ));
   }
@@ -105,10 +82,7 @@ class MusicList extends SearchDelegate<SongModel> {
           );
         } else {
           return Center(
-            child: Text(
-              'No Results Found',
-              // style: ourStyle(family: bold, size: 28, color: slideColor),
-            ),
+            child: Text('No Results Found'),
           );
         }
       },
@@ -124,13 +98,12 @@ class MusicList extends SearchDelegate<SongModel> {
 
     // Filter the songs based on the search query
     for (var songInfo in songInfoList) {
-      String artist = songInfo.artist ?? ''; // Handle nullable value
+      String artist = songInfo.artist ?? '';
       if (songInfo.title.toLowerCase().contains(query.toLowerCase()) ||
           artist.toLowerCase().contains(query.toLowerCase())) {
         songs.add(songInfo);
       }
     }
-
     return songs;
   }
 }

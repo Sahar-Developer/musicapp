@@ -12,7 +12,7 @@ class WelcomeOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
     splashController.startAnimation();
     return Scaffold(
       body: Container(
@@ -74,29 +74,26 @@ class WelcomeOne extends StatelessWidget {
             ),
             Obx(
               () => AnimatedPositioned(
-                  top: splashController.animate.value ? 80 : -130,
-                  // left: 20,
-                  // bottom: 240,
+                  top:
+                      splashController.animate.value ? size.height * 0.1 : -130,
                   duration: Duration(milliseconds: 1600),
                   child: AnimatedOpacity(
                     duration: Duration(milliseconds: 2000),
                     opacity: splashController.animate.value ? 1 : 0,
                     child: Container(
-                      width: 412,
-                      height: 412,
+                      width: size.width,
+                      height: size.height / 2,
                       decoration: BoxDecoration(boxShadow: [
                         BoxShadow(
                             color: Color.fromARGB(66, 71, 70, 70),
                             offset: Offset(2, 10),
                             blurRadius: double.infinity,
-                            spreadRadius:
-                                0.1, // The amount the box should be inflated prior to applying the blur
+                            spreadRadius: 0.1,
                             blurStyle: BlurStyle.solid)
                       ]),
                       child: Opacity(
                         opacity: 0.7,
                         child: Image(
-                          // alignment: Alignment.center,
                           image: AssetImage(
                             welcome1,
                           ),

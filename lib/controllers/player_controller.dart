@@ -26,9 +26,15 @@ class PlayerController extends GetxController {
     if (!favorite.contains(song)) {
       favorite.add(song);
       print('${song.displayNameWOExt} added to favorites.');
+      Get.snackbar('Notification', 'Song Added To The Favorite Page.',
+          snackPosition: SnackPosition.BOTTOM,
+          duration: Duration(milliseconds: 1500));
     } else {
       favorite.remove(song);
       print('${song.displayNameWOExt} removed from favorites.');
+      Get.snackbar('Notification', 'Song Removed From The Favorite Page.',
+          snackPosition: SnackPosition.BOTTOM,
+          duration: Duration(milliseconds: 1500));
     }
   }
 
@@ -36,7 +42,6 @@ class PlayerController extends GetxController {
   void onInit() {
     super.onInit();
     checkPermission();
-    // loadSongs();
   }
 
   void setCurrentSong(SongModel song, String? uri, int index) {
@@ -46,8 +51,6 @@ class PlayerController extends GetxController {
       audioPlayer.play();
       isPlaying(true);
       updatePosition();
-
-      // Add the played song to the recently played list
       addToRecentlyPlayed(song);
     } on Exception catch (e) {
       print(e.toString());

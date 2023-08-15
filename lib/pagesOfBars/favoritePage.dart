@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:musicapp/controllers/playerFavorite.dart';
+import 'package:musicapp/views/playerFavorite.dart';
 import 'package:musicapp/controllers/player_controller.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
@@ -14,17 +14,13 @@ class FavoritePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      // backgroundColor: bgColor,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Obx(() {
           final favoriteList = controller.favorite.toList();
           if (favoriteList.isEmpty) {
             return Center(
-              child: Text(
-                "No Song Found!",
-                // style: ourStyle(family: bold, size: 40, color: slideColor),
-              ),
+              child: Text("No Song Found!"),
             );
           } else {
             return ListView.builder(
@@ -39,31 +35,16 @@ class FavoritePage extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5),
                         ),
-                        // tileColor: newcolor,
+
                         //the settings and styles of the artist an songs
-                        title: Text(
-                          song.displayNameWOExt,
-                          // style: ourStyle(
-                          //   family: bold,
-                          //   size: 15,
-                          // color: whiteColor,
-                          // ),
-                        ),
-                        subtitle: Text(
-                          "${song.artist}",
-                          // style: ourStyle(
-                          //   family: regular,
-                          //   size: 12,
-                          // color: whiteColor,
-                          // ),
-                        ),
+                        title: Text(song.displayNameWOExt),
+                        subtitle: Text("${song.artist}"),
                         //the icon and cover of music
                         leading: QueryArtworkWidget(
                           id: song.id,
                           type: ArtworkType.AUDIO,
                           nullArtworkWidget: const Icon(
                             Icons.music_note,
-                            // color: slideColor,
                             size: 35,
                           ),
                         ),
@@ -72,19 +53,17 @@ class FavoritePage extends StatelessWidget {
                                 controller.playIndex.value == index
                             ? const Icon(
                                 Icons.play_arrow,
-                                // color: whiteColor,
                                 size: 25,
                               )
                             : null,
                         // a music clicked...
                         onTap: () {
                           Get.to(
-                            () => PlayerFavorite(
-                              data: favoriteList,
-                              selectedIndex: index,
-                            ),
-                            transition: Transition.downToUp,
-                          );
+                              () => PlayerFavorite(
+                                    data: favoriteList,
+                                    selectedIndex: index,
+                                  ),
+                              transition: Transition.downToUp);
                         },
                       )),
                 );
